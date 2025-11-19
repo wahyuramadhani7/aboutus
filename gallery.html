@@ -6,9 +6,89 @@
     <title>Our Love Story - Gallery</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/gallery.css">
+    <style>
+        /* Tambahan CSS agar lebih rapi & cantik */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .gallery-item.hidden {
+            opacity: 0;
+            transform: scale(0.8);
+            display: none;
+        }
+        .gallery-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        .view-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #ff6b6b;
+            background: transparent;
+            color: #ff6b6b;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: #ff6b6b;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- Navigation (sama seperti sebelumnya) -->
     <nav class="navbar">
         <div class="container">
             <div class="logo">Our Story ❤️</div>
@@ -19,27 +99,24 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
     <section class="page-header">
         <h1>Galeri Kenangan</h1>
         <p>Koleksi momen indah yang kami lalui bersama</p>
     </section>
 
-    <!-- Gallery Filter -->
+    <!-- Filter Buttons -->
     <section class="gallery-filter">
         <div class="container">
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="dates">Kencan</button>
-                <button class="filter-btn" data-filter="travel">Traveling</button>
-                <button class="filter-btn" data-filter="special">Momen Spesial</button>
+                <button class="filter-btn" data-filter="dates">Dates</button>
+                <button class="filter-btn" data-filter="travel">">Travel</button>
+                <button class="filter-btn" data-filter="special">Special</button>
             </div>
         </div>
     </section>
@@ -47,11 +124,11 @@
     <!-- Gallery Grid -->
     <section class="gallery">
         <div class="container">
-            <div class="gallery-grid">
-                <!-- Gallery Item 1 -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Semua foto pakai gambar asli -->
                 <div class="gallery-item" data-category="dates">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 1</div>
+                        <img src="images/gallery1.jpg" alt="Kencan di Kafe">
                         <div class="gallery-overlay">
                             <h3>Kencan di Kafe</h3>
                             <p>Menikmati kopi dan kue favorit</p>
@@ -59,11 +136,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 2 -->
                 <div class="gallery-item" data-category="travel">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 2</div>
+                        <img src="images/gallery2.jpg" alt="Pantai Bersama">
                         <div class="gallery-overlay">
                             <h3>Pantai Bersama</h3>
                             <p>Menikmati sunset di pantai</p>
@@ -71,11 +146,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 3 -->
                 <div class="gallery-item" data-category="special">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 3</div>
+                        <img src="images/gallery3.jpg" alt="Anniversary">
                         <div class="gallery-overlay">
                             <h3>Anniversary</h3>
                             <p>Merayakan anniversary pertama</p>
@@ -83,11 +156,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 4 -->
                 <div class="gallery-item" data-category="dates">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 4</div>
+                        <img src="images/foto4.jpg" alt="Dinner Romantis">
                         <div class="gallery-overlay">
                             <h3>Dinner Romantis</h3>
                             <p>Makan malam yang romantis</p>
@@ -95,11 +166,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 5 -->
                 <div class="gallery-item" data-category="travel">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 5</div>
+                        <img src="images/foto5.jpg" alt="Gunung Bersama">
                         <div class="gallery-overlay">
                             <h3>Gunung Bersama</h3>
                             <p>Mendaki gunung di pagi hari</p>
@@ -107,11 +176,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 6 -->
                 <div class="gallery-item" data-category="special">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 6</div>
+                        <img src="images/foto6.jpg" alt="Ulang Tahun">
                         <div class="gallery-overlay">
                             <h3>Ulang Tahun</h3>
                             <p>Merayakan ulang tahun bersama</p>
@@ -119,11 +186,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 7 -->
                 <div class="gallery-item" data-category="dates">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 7</div>
+                        <img src="images/foto7.jpg" alt="Nonton Bioskop">
                         <div class="gallery-overlay">
                             <h3>Nonton Bioskop</h3>
                             <p>Marathon film favorit</p>
@@ -131,11 +196,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 8 -->
                 <div class="gallery-item" data-category="travel">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 8</div>
+                        <img src="images/foto8.jpg" alt="Road Trip">
                         <div class="gallery-overlay">
                             <h3>Road Trip</h3>
                             <p>Petualangan di jalan raya</p>
@@ -143,11 +206,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Gallery Item 9 -->
                 <div class="gallery-item" data-category="special">
                     <div class="gallery-image">
-                        <div class="placeholder-image">📸 Foto 9</div>
+                        <img src="images/foto9.jpg" alt="Valentine">
                         <div class="gallery-overlay">
                             <h3>Valentine</h3>
                             <p>Valentine penuh cinta</p>
@@ -161,14 +222,14 @@
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <span class="prev-lightbox">&#10094;</span>
-        <span class="next-lightbox">&#10095;</span>
+        <span class="close-lightbox" onclick="closeLightbox()">×</span>
+        <span class="prev-lightbox" onclick="changeSlide(-1)">❮</span>
+        <span class="next-lightbox" onclick="changeSlide(1)">❯</span>
         <div class="lightbox-content">
-            <div class="placeholder-image large">📸 Foto</div>
+            <img id="lightbox-img" src="" alt="Foto Besar">
             <div class="lightbox-caption">
-                <h3>Judul Foto</h3>
-                <p>Deskripsi foto</p>
+                <h3 id="lightbox-title">Judul</h3>
+                <p id="lightbox-desc">Deskripsi</p>
             </div>
         </div>
     </div>
@@ -176,16 +237,84 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Our Love Story. Made with ❤️</p>
-            <div class="social-links">
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="Facebook">📘</a>
-                <a href="#" title="Twitter">🐦</a>
-            </div>
+            <p>© 2025 Our Love Story. Made with ❤️</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/gallery.js"></script>
+    <script>
+        // Data foto (sesuai urutan di HTML)
+        const galleryData = [
+            { src: "images/foto1.jpg", title: "Kencan di Kafe", desc: "Menikmati kopi dan kue favorit" },
+            { src: "images/foto2.jpg", title: "Pantai Bersama", desc: "Menikmati sunset di pantai" },
+            { src: "images/foto3.jpg", title: "Anniversary", desc: "Merayakan anniversary pertama" },
+            { src: "images/foto4.jpg", title: "Dinner Romantis", desc: "Makan malam yang romantis" },
+            { src: "images/foto5.jpg", title: "Gunung Bersama", desc: "Mendaki gunung di pagi hari" },
+            { src: "images/foto6.jpg", title: "Ulang Tahun", desc: "Merayakan ulang tahun bersama" },
+            { src: "images/foto7.jpg", title: "Nonton Bioskop", desc: "Marathon film favorit" },
+            { src: "images/foto8.jpg", title: "Road Trip", desc: "Petualangan di jalan raya" },
+            { src: "images/foto9.jpg", title: "Valentine", desc: "Valentine penuh cinta" }
+        ];
+
+        let currentIndex = 0;
+
+        // Filter Functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => item.classList.add('hidden'), 400);
+                    }
+                });
+            });
+        });
+
+        // Lightbox Functions
+        function openLightbox(index) {
+            currentIndex = index;
+            document.getElementById('lightbox-img').src = galleryData[index].src;
+            document.getElementById('lightbox-title').textContent = galleryData[index].title;
+            document.getElementById('lightbox-desc').textContent = galleryData[index].desc;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeSlide(direction) {
+            currentIndex = (currentIndex + direction + galleryData.length) % galleryData.length;
+            document.getElementById('lightbox-img').src = galleryData[currentIndex].src;
+            document.getElementById('lightbox-title').textContent = galleryData[currentIndex].title;
+            document.getElementById('lightbox-desc').textContent = galleryData[currentIndex].desc;
+        }
+
+        // Tutup lightbox kalau klik luar
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeSlide(-1);
+                if (e.key === 'ArrowRight') changeSlide(1);
+            }
+        });
+    </script>
 </body>
 </html>
