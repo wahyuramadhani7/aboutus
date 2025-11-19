@@ -3,11 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story - About</title>
+    <title>Tentang Kami - Our Love Story</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/about.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Styling inline biar langsung jadi & rapi tanpa tambah CSS baru */
+        .about-us-clean {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #fff5f9, #ffeef8);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .couple-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .person {
+            position: relative;
+        }
+        .person img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid #fff;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.2);
+            transition: all 0.4s ease;
+        }
+        .person img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 30px 60px rgba(255, 20, 100, 0.3);
+        }
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 42px;
+            margin: 20px 0 8px;
+            color: #ff1493;
+        }
+        .major {
+            font-size: 20px;
+            color: #555;
+            margin: 5px 0;
+            font-weight: 500;
+        }
+        .university {
+            font-size: 18px;
+            color: #888;
+            font-style: italic;
+        }
+        .heart-between {
+            font-size: 60px;
+            margin: 0 30px;
+            animation: pulse 2s infinite;
+        }
+        .love-counter {
+            margin-top: 60px;
+            font-size: 28px;
+            color: #ff69b4;
+            font-weight: 600;
+        }
+        .quote {
+            margin-top: 50px;
+            font-size: 22px;
+            color: #666;
+            font-style: italic;
+            max-width: 800px;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        @media (max-width: 768px) {
+            .couple-container { flex-direction: column; gap: 40px; }
+            .heart-between { transform: rotate(90deg); margin: 10px 0; }
+            .person img { width: 220px; height: 220px; }
+            .name { font-size: 36px; }
+        }
+    </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -19,132 +104,50 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1>Kisah Cinta Kami</h1>
-        <p>Perjalanan indah yang dimulai dengan takdir</p>
-    </section>
+    <!-- About Us - Super Clean -->
+    <section class="about-us-clean">
+        <div class="couple-container">
+            <!-- Wahyu -->
+            <div class="person">
+                <img src="images/aboutwahyu.jpg" alt="Wahyu Ramadhani">
+                <h2 class="name">Wahyu Ramadhani</h2>
+                <p class="major">Teknik Komputer</p>
+                <p class="university">Universitas Diponegoro</p>
+            </div>
 
-    <!-- Our Story -->
-    <section class="our-story">
-        <div class="container">
-            <div class="story-content">
-                <h2>Bagaimana Kami Bertemu</h2>
-                <p>Semuanya dimulai pada hari yang cerah di musim semi. Kami tidak pernah menyangka bahwa pertemuan singkat itu akan mengubah hidup kami selamanya. Senyuman pertama, sapaan pertama, dan percakapan pertama yang canggung namun penuh kehangatan.</p>
-                <p>Dari pertemuan yang tidak disengaja itu, kami mulai mengenal satu sama lain. Setiap percakapan membawa kami lebih dekat, setiap tawa yang dibagikan membuat ikatan kami semakin kuat.</p>
+            <!-- Hati Tengah -->
+            <div class="heart-between">❤️</div>
+
+            <!-- Lathifa -->
+            <div class="person">
+                <img src="images/Lathifaabout.jpg" alt="Lathifa Ayu Muthmainah">
+                <h2 class="name">Lathifa Ayu Muthmainah</h2>
+                <p class="major">Teknologi Pendidikan</p>
+                <p class="university">Universitas Negeri Semarang</p>
             </div>
         </div>
-    </section>
 
-    <!-- Timeline -->
-    <section class="timeline">
-        <div class="container">
-            <h2>Timeline Perjalanan Kami</h2>
-            <div class="timeline-container">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Januari 2023</div>
-                        <h3>Pertama Bertemu</h3>
-                        <p>Pertemuan pertama yang mengubah segalanya. Mata bertemu, senyum tertukar, dan hati mulai berdebar.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Februari 2023</div>
-                        <h3>Kencan Pertama</h3>
-                        <p>Kencan pertama yang sempurna dengan segala kecanggungan dan kebahagiaan yang tak terlupakan.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Maret 2023</div>
-                        <h3>Jadi Pasangan</h3>
-                        <p>Hari dimana kami resmi menjadi pasangan. Awal dari petualangan cinta yang indah.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Juli 2023</div>
-                        <h3>Liburan Bersama</h3>
-                        <p>Trip pertama berdua ke pantai. Melihat sunset bersama dan membuat kenangan yang tak terlupakan.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Januari 2024</div>
-                        <h3>Anniversary Pertama</h3>
-                        <p>Merayakan satu tahun penuh cinta, tawa, dan kebahagiaan bersama.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2025 - Sekarang</div>
-                        <h3>Masih Bersama</h3>
-                        <p>Terus menulis cerita cinta kami setiap hari dengan penuh kasih sayang.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Fun Facts -->
-    <section class="fun-facts">
-        <div class="container">
-            <h2>Fun Facts Tentang Kami</h2>
-            <div class="facts-grid">
-                <div class="fact-card">
-                    <span class="fact-emoji">🍕</span>
-                    <h3>Makanan Favorit</h3>
-                    <p>Pizza dan Pasta - Selalu jadi pilihan untuk date night</p>
-                </div>
-                <div class="fact-card">
-                    <span class="fact-emoji">🎬</span>
-                    <h3>Film Favorit</h3>
-                    <p>Film romantis dan komedi - Selalu bikin kami tertawa</p>
-                </div>
-                <div class="fact-card">
-                    <span class="fact-emoji">🎵</span>
-                    <h3>Lagu Kesukaan</h3>
-                    <p>"Perfect" by Ed Sheeran - Lagu yang selalu mengingatkan kami</p>
-                </div>
-                <div class="fact-card">
-                    <span class="fact-emoji">☕</span>
-                    <h3>Kebiasaan Kami</h3>
-                    <p>Ngopi bareng setiap pagi sambil ngobrol ringan</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Love Quote -->
-    <section class="love-quote">
-        <div class="container">
-            <blockquote>
-                "Cinta sejati bukan tentang menemukan orang yang sempurna, tapi tentang melihat kesempurnaan dalam ketidaksempurnaan seseorang."
-            </blockquote>
-            <p class="quote-author">- Kami</p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Our Love Story. Made with ❤️</p>
-            <div class="social-links">
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="Facebook">📘</a>
-                <a href="#" title="Twitter">🐦</a>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Script lama tetap jalan (floating hearts, love counter, dll) -->
     <script src="js/main.js"></script>
+    <script src="js/about.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <!-- Confetti kecil saat buka halaman -->
+    <script>
+        setTimeout(() => {
+            confetti({
+                particleCount: 80,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff69b4', '#ff1493', '#ffc0cb']
+            });
+        }, 800);
+    </script>
 </body>
 </html>
