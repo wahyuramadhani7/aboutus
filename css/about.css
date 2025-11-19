@@ -1,0 +1,229 @@
+/* Our Story Section */
+.our-story {
+    padding: 5rem 0;
+    background: var(--bg-light);
+}
+
+.story-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.story-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.story-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* Timeline Section */
+.timeline {
+    padding: 5rem 0;
+    background: var(--bg-gray);
+}
+
+.timeline h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+}
+
+.timeline-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item.right {
+    left: 50%;
+    text-align: left;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    top: 30px;
+    z-index: 1;
+}
+
+.timeline-item.left::after {
+    right: -10px;
+}
+
+.timeline-item.right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.timeline-content:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow);
+}
+
+.timeline-date {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.timeline-content h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Fun Facts Section */
+.fun-facts {
+    padding: 5rem 0;
+    background: var(--bg-light);
+}
+
+.fun-facts h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+}
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.fact-card {
+    background: var(--bg-gray);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.fact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow);
+}
+
+.fact-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.fact-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.fact-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Love Quote Section */
+.love-quote {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+}
+
+.love-quote blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.8;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline-container::before {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+        text-align: left;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item::after {
+        left: 20px;
+    }
+
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        left: 20px;
+    }
+
+    .love-quote blockquote {
+        font-size: 1.2rem;
+    }
+}

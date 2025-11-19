@@ -1,0 +1,261 @@
+/* =============================================
+   home.css – Versi Final dengan Background Foto
+   Siap pakai, responsif, dan super romantis
+   ============================================= */
+
+:root {
+    --primary-color: #ff6b9d;
+    --secondary-color: #c44569;
+    --bg-light: #ffffff;
+    --bg-gray: #f8f9fa;
+    --text-dark: #333;
+    --text-light: #666;
+    --shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    --transition: all 0.4s ease;
+}
+
+/* ====================== HERO SECTION ====================== */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+
+    /* ←←← GANTI JADI INI SAJA (copy-paste persis) */
+    background: 
+        linear-gradient(135deg, rgba(255, 107, 157, 0.45), rgba(196, 69, 105, 0.65)),
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+        url('../images/bgaboutus.jpg') center/cover no-repeat fixed;
+    /* ←←← SAMPE SINI */
+}
+
+/* Fallback kalau foto gagal load */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 2rem;
+}
+
+.hero h1 {
+    font-size: 4.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.hero p {
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1.2s ease-out 0.3s both;
+}
+
+/* Tombol */
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    animation: fadeInUp 1.2s ease-out 0.6s both;
+}
+
+.btn-primary {
+    background: white;
+    color: #c44569;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover {
+    transform: translateY(-50%, -5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.scroll-indicator span {
+    display: block;
+    width: 28px;
+    height: 48px;
+    border: 2.5px solid white;
+    border-radius: 50px;
+    position: relative;
+}
+
+.scroll-indicator span::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    animation: scroll 2s infinite;
+}
+
+@keyframes scroll {
+    0%, 100%   { opacity: 0; transform: translate(-50%, 0); }
+    50%        { opacity: 1; transform: translate(-50%, 14px); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================== INTRO SECTION ====================== */
+.intro {
+    padding: 6rem 0;
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.intro > p {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 1.15rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.intro-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.stat-item {
+    padding: 2.5rem 1.5rem;
+    background: var(--bg-gray);
+    border-radius: 18px;
+    transition: var(--transition);
+}
+
+.stat-item:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow);
+}
+
+.stat-item h3 {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* ====================== HIGHLIGHTS SECTION ====================== */
+.highlights {
+    padding: 6rem 0;
+    background: var(--bg-gray);
+}
+
+.highlights h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3.5rem;
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.highlight-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--shadow);
+}
+
+.highlight-icon {
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
+}
+
+/* ====================== CTA SECTION ====================== */
+.cta {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    text-align: center;
+}
+
+.cta h2 { font-size: 2.6rem; margin-bottom: 1rem; }
+.cta p { font-size: 1.3rem; opacity: 0.95; }
+
+.btn-secondary {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 14px 38px;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--secondary-color);
+}
+
+/* ====================== RESPONSIVE ====================== */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 4rem; }
+    .hero p { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3.2rem; }
+    .hero p { font-size: 1.3rem; }
+    .hero-content { padding: 1.5rem; }
+    .intro h2, .highlights h2, .cta h2 { font-size: 2.2rem; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 2.6rem; }
+    .hero p { font-size: 1.15rem; }
+    .btn { padding: 12px 30px; }
+}

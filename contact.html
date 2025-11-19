@@ -1,49 +1,140 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact ♡ Our Love Story</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - Contact</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo"><span class="heart">💖</span> Our Story</div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="journey.html">Journey</a></li>
-      <li><a href="memories.html">Memories</a></li>
-      <li><a href="contact.html" class="active">Contact</a></li>
-    </ul>
-    <div class="hamburger">☰</div>
-  </nav>
-
-  <section class="page-hero" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-    <div class="hero-content">
-      <h1>Hubungi Kami</h1>
-      <p>Kirimkan pesan cinta atau doa terbaik untuk kita berdua</p>
-    </div>
-  </section>
-
-  <section class="content-section contact-section">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="contact-text">
-          <h2>Kirim Pesan Cinta 💌</h2>
-          <p>Setiap pesan dari kalian akan jadi bagian dari cerita kita.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Our Story ❤️</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-        <form class="contact-form">
-          <input type="text" placeholder="Nama kamu" required>
-          <input type="email" placeholder="Email (opsional)">
-          <textarea rows="5" placeholder="Tulis pesan terindahmu di sini..." required></textarea>
-          <button type="submit" class="btn primary">Kirim Pesan ❤️</button>
-        </form>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <script src="script.js"></script>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Hubungi Kami</h1>
+        <p>Kami senang mendengar dari Anda</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Informasi Kontak</h2>
+                    <p>Jangan ragu untuk menghubungi kami melalui form atau informasi kontak di bawah ini.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>ourlovestory@email.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <h3>Telepon</h3>
+                                <p>+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <h3>Lokasi</h3>
+                                <p>Jakarta, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-media">
+                        <h3>Ikuti Kami</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">📷 Instagram</a>
+                            <a href="#" class="social-icon">📘 Facebook</a>
+                            <a href="#" class="social-icon">🐦 Twitter</a>
+                            <a href="#" class="social-icon">💼 LinkedIn</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Kirim Pesan</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required placeholder="Masukkan nama Anda">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="Masukkan email Anda">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Masukkan subjek pesan">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    </form>
+
+                    <div id="formMessage" class="form-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Optional) -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Lokasi Kami</h2>
+            <div class="map-placeholder">
+                <p>🗺️ Map akan ditampilkan di sini</p>
+                <p class="map-note">Anda dapat menambahkan Google Maps embed code di sini</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Our Love Story. Made with ❤️</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
 </body>
 </html>

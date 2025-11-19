@@ -1,117 +1,150 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Our Love Story</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Styling khusus untuk foto di card */
-    .profile-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 8px solid #fff;
-      box-shadow: 0 10px 30px rgba(233,30,99,0.3);
-      margin-bottom: 20px;
-      transition: all 0.4s;
-    }
-    .profile-card:hover .profile-photo {
-      transform: scale(1.1);
-      box-shadow: 0 15px 40px rgba(233,30,99,0.4);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - About</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about.css">
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="logo"><span class="heart">Our Story</span></div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="journey.html">Journey</a></li>
-      <li><a href="memories.html">Memories</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="hamburger">Menu</div>
-  </nav>
-
-  <!-- Hero About -->
-  <section class="hero" style="background-image: url('images/halamanabout.jpg');">
-    <div class="floating-hearts">
-      <span>Heart</span><span>Heart</span>
-    </div>
-    <div class="hero-content">
-      <h1>About Us</h1>
-      <p>Dua jiwa yang saling melengkapi, <br>dicintai, dan ditakdirkan untuk bersama selamanya ♡</p>
-    </div>
-    <div class="scroll-down">
-      <a href="#about-section">Down Arrow</a>
-    </div>
-  </section>
-
-  <!-- About Us Cards dengan FOTO ASLI -->
-  <section id="about-section" style="padding: 140px 50px; background: linear-gradient(135deg, #fdfafb, #fdf2f8); min-height: 100vh;">
-    <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
-
-      <h2 style="font-family:'Dancing Script', cursive; font-size:5.5rem; color:#e91e63; margin-bottom:80px;">
-        About Us
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 60px; margin-top: 50px;">
-
-        <!-- CARD COWOK -->
-        <div class="profile-card" style="background:white; padding:60px 40px; border-radius:32px; box-shadow:0 25px 50px rgba(233,30,99,0.18); transition:all 0.4s;">
-          <div style="text-align:center;">
-            <img src="images/wahyuabout.jpg" alt="Nama Kamu" class="profile-photo">
-          </div>
-          <h3 style="font-size:28px; font-weight:600; color:#333; margin:20px 0 8px;">Wahyu</h3>
-          <p style="color:#e91e63; font-weight:600; font-size:19px; margin-bottom:20px;">Programmer</p>
-          <p style="color:#666; line-height:1.8; font-size:16.5px;">
-            A passionate software developer who loves solving problems and building beautiful things. 
-            Alex brings creativity, humor, and endless love to every moment shared with their partner.
-          </p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Our Story ❤️</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
+    </nav>
 
-        <!-- CARD CEWEK -->
-        <div class="profile-card" style="background:white; padding:60px 40px; border-radius:32px; box-shadow:0 25px 50px rgba(233,30,99,0.18); transition:all 0.4s;">
-          <div style="text-align:center;">
-            <img src="images/Lathifaabout.jpg" alt="Nama Dia" class="profile-photo">
-          </div>
-          <h3 style="font-size:28px; font-weight:600; color:#333; margin:20px 0 8px;">Lathifa</h3>
-          <p style="color:#e91e63; font-weight:600; font-size:19px; margin-bottom:20px;">Teacher</p>
-          <p style="color:#666; line-height:1.8; font-size:16.5px;">
-            A creative designer with an eye for beauty and an appetite for adventure. 
-            Jordan brings warmth, inspiration, and unconditional love that makes every day an adventure.
-          </p>
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Kisah Cinta Kami</h1>
+        <p>Perjalanan indah yang dimulai dengan takdir</p>
+    </section>
+
+    <!-- Our Story -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content">
+                <h2>Bagaimana Kami Bertemu</h2>
+                <p>Semuanya dimulai pada hari yang cerah di musim semi. Kami tidak pernah menyangka bahwa pertemuan singkat itu akan mengubah hidup kami selamanya. Senyuman pertama, sapaan pertama, dan percakapan pertama yang canggung namun penuh kehangatan.</p>
+                <p>Dari pertemuan yang tidak disengaja itu, kami mulai mengenal satu sama lain. Setiap percakapan membawa kami lebih dekat, setiap tawa yang dibagikan membuat ikatan kami semakin kuat.</p>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- Timeline -->
+    <section class="timeline">
+        <div class="container">
+            <h2>Timeline Perjalanan Kami</h2>
+            <div class="timeline-container">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Januari 2023</div>
+                        <h3>Pertama Bertemu</h3>
+                        <p>Pertemuan pertama yang mengubah segalanya. Mata bertemu, senyum tertukar, dan hati mulai berdebar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Februari 2023</div>
+                        <h3>Kencan Pertama</h3>
+                        <p>Kencan pertama yang sempurna dengan segala kecanggungan dan kebahagiaan yang tak terlupakan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Maret 2023</div>
+                        <h3>Jadi Pasangan</h3>
+                        <p>Hari dimana kami resmi menjadi pasangan. Awal dari petualangan cinta yang indah.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Juli 2023</div>
+                        <h3>Liburan Bersama</h3>
+                        <p>Trip pertama berdua ke pantai. Melihat sunset bersama dan membuat kenangan yang tak terlupakan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Januari 2024</div>
+                        <h3>Anniversary Pertama</h3>
+                        <p>Merayakan satu tahun penuh cinta, tawa, dan kebahagiaan bersama.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025 - Sekarang</div>
+                        <h3>Masih Bersama</h3>
+                        <p>Terus menulis cerita cinta kami setiap hari dengan penuh kasih sayang.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- Love Note -->
-      <div style="margin-top:120px; font-family:'Dancing Script', cursive; font-size:36px; color:#e91e63; line-height:1.8;">
-        <strong>Kita bertemu bukan karena kebetulan,</strong><br>
-        tapi karena alam semesta tahu<br>
-        <span style="font-size:42px;">kita ditakdirkan jadi satu ♡</span>
-      </div>
+    <!-- Fun Facts -->
+    <section class="fun-facts">
+        <div class="container">
+            <h2>Fun Facts Tentang Kami</h2>
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <span class="fact-emoji">🍕</span>
+                    <h3>Makanan Favorit</h3>
+                    <p>Pizza dan Pasta - Selalu jadi pilihan untuk date night</p>
+                </div>
+                <div class="fact-card">
+                    <span class="fact-emoji">🎬</span>
+                    <h3>Film Favorit</h3>
+                    <p>Film romantis dan komedi - Selalu bikin kami tertawa</p>
+                </div>
+                <div class="fact-card">
+                    <span class="fact-emoji">🎵</span>
+                    <h3>Lagu Kesukaan</h3>
+                    <p>"Perfect" by Ed Sheeran - Lagu yang selalu mengingatkan kami</p>
+                </div>
+                <div class="fact-card">
+                    <span class="fact-emoji">☕</span>
+                    <h3>Kebiasaan Kami</h3>
+                    <p>Ngopi bareng setiap pagi sambil ngobrol ringan</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Love Quote -->
+    <section class="love-quote">
+        <div class="container">
+            <blockquote>
+                "Cinta sejati bukan tentang menemukan orang yang sempurna, tapi tentang melihat kesempurnaan dalam ketidaksempurnaan seseorang."
+            </blockquote>
+            <p class="quote-author">- Kami</p>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
-  <script>
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Our Love Story. Made with ❤️</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
 
-    // Hamburger menu
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
-  </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

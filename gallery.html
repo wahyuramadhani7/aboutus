@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Our Story ❤️</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Galeri Kenangan</h1>
+        <p>Koleksi momen indah yang kami lalui bersama</p>
+    </section>
+
+    <!-- Gallery Filter -->
+    <section class="gallery-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="dates">Kencan</button>
+                <button class="filter-btn" data-filter="travel">Traveling</button>
+                <button class="filter-btn" data-filter="special">Momen Spesial</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="gallery">
+        <div class="container">
+            <div class="gallery-grid">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item" data-category="dates">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 1</div>
+                        <div class="gallery-overlay">
+                            <h3>Kencan di Kafe</h3>
+                            <p>Menikmati kopi dan kue favorit</p>
+                            <button class="view-btn" onclick="openLightbox(0)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item" data-category="travel">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 2</div>
+                        <div class="gallery-overlay">
+                            <h3>Pantai Bersama</h3>
+                            <p>Menikmati sunset di pantai</p>
+                            <button class="view-btn" onclick="openLightbox(1)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item" data-category="special">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 3</div>
+                        <div class="gallery-overlay">
+                            <h3>Anniversary</h3>
+                            <p>Merayakan anniversary pertama</p>
+                            <button class="view-btn" onclick="openLightbox(2)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item" data-category="dates">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 4</div>
+                        <div class="gallery-overlay">
+                            <h3>Dinner Romantis</h3>
+                            <p>Makan malam yang romantis</p>
+                            <button class="view-btn" onclick="openLightbox(3)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item" data-category="travel">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 5</div>
+                        <div class="gallery-overlay">
+                            <h3>Gunung Bersama</h3>
+                            <p>Mendaki gunung di pagi hari</p>
+                            <button class="view-btn" onclick="openLightbox(4)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item" data-category="special">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 6</div>
+                        <div class="gallery-overlay">
+                            <h3>Ulang Tahun</h3>
+                            <p>Merayakan ulang tahun bersama</p>
+                            <button class="view-btn" onclick="openLightbox(5)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 -->
+                <div class="gallery-item" data-category="dates">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 7</div>
+                        <div class="gallery-overlay">
+                            <h3>Nonton Bioskop</h3>
+                            <p>Marathon film favorit</p>
+                            <button class="view-btn" onclick="openLightbox(6)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 -->
+                <div class="gallery-item" data-category="travel">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 8</div>
+                        <div class="gallery-overlay">
+                            <h3>Road Trip</h3>
+                            <p>Petualangan di jalan raya</p>
+                            <button class="view-btn" onclick="openLightbox(7)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 9 -->
+                <div class="gallery-item" data-category="special">
+                    <div class="gallery-image">
+                        <div class="placeholder-image">📸 Foto 9</div>
+                        <div class="gallery-overlay">
+                            <h3>Valentine</h3>
+                            <p>Valentine penuh cinta</p>
+                            <button class="view-btn" onclick="openLightbox(8)">Lihat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <span class="prev-lightbox">&#10094;</span>
+        <span class="next-lightbox">&#10095;</span>
+        <div class="lightbox-content">
+            <div class="placeholder-image large">📸 Foto</div>
+            <div class="lightbox-caption">
+                <h3>Judul Foto</h3>
+                <p>Deskripsi foto</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Our Love Story. Made with ❤️</p>
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>
