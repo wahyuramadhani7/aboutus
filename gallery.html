@@ -1,320 +1,336 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Love Story - Gallery</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/gallery.css">
-    <style>
-        /* Tambahan CSS agar lebih rapi & cantik */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        .gallery-item {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            opacity: 1;
-            transform: scale(1);
-        }
-        .gallery-item.hidden {
-            opacity: 0;
-            transform: scale(0.8);
-            display: none;
-        }
-        .gallery-image {
-            position: relative;
-            overflow: hidden;
-        }
-        .gallery-image img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-        .view-btn {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        .filter-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 30px 0;
-        }
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #ff6b6b;
-            background: transparent;
-            color: #ff6b6b;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: #ff6b6b;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Love Story - Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Basic */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins', sans-serif; background:#fdf6f6; color:#333; }
+    .container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+    /* Navbar */
+    .navbar { background:rgba(255,255,255,0.95); padding:20px 0; position:fixed; width:100%; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    .navbar .container { display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-size:1.8rem; font-weight:600; color:#e91e63; }
+    .nav-menu { list-style:none; display:flex; gap:30px; }
+    .nav-menu a { text-decoration:none; color:#333; font-weight:500; }
+    .nav-menu a.active, .nav-menu a:hover { color:#e91e63; }
+
+    /* Header */
+    .page-header { text-align:center; padding:120px 20px 60px; background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('images/header.jpg') center/cover no-repeat; color:white; }
+    .page-header h1 { font-size:3rem; margin-bottom:10px; }
+    .page-header p { font-size:1.2rem; opacity:0.9; }
+
+    /* Filter */
+    .gallery-filter { padding:40px 0; text-align:center; background:#fff; }
+    .filter-buttons button { 
+      margin:0 10px; padding:12px 24px; border:none; border-radius:50px; 
+      background:#eee; cursor:pointer; font-weight:500; transition:0.3s; 
+    }
+    .filter-buttons button.active, .filter-buttons button:hover { background:#e91e63; color:white; }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+      gap:24px;
+      padding:40px 0;
+    }
+    .gallery-item {
+      position:relative;
+      overflow:hidden;
+      border-radius:16px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.1);
+      transition:transform 0.4s, box-shadow 0.4s;
+    }
+    .gallery-item img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.5s;
+    }
+    .gallery-overlay {
+      position:absolute;
+      bottom:0; left:0; right:0;
+      background:linear-gradient(transparent, rgba(0,0,0,0.85));
+      color:white;
+      padding:40px 20px 20px;
+      text-align:center;
+      transform:translateY(30px);
+      opacity:0;
+      transition:0.4s;
+    }
+    .gallery-item:hover {
+      transform:translateY(-12px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    }
+    .gallery-item:hover img { transform:scale(1.1); }
+    .gallery-item:hover .gallery-overlay { transform:translateY(0); opacity:1; }
+
+    .view-btn {
+      margin-top:12px;
+      padding:8px 20px;
+      background:rgba(255,255,255,0.2);
+      border:1px solid rgba(255,255,255,0.4);
+      border-radius:30px;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .view-btn:hover { background:#e91e63; border-color:#e91e63; }
+
+    /* Lightbox */
+    .lightbox {
+      display:none;
+      position:fixed;
+      top:0; left:0; width:100%; height:100%;
+      background:rgba(0,0,0,0.95);
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:20px;
+    }
+    .lightbox.active { display:flex; }
+    .lightbox-content { position:relative; max-width:95%; max-height:95%; }
+    #lightbox-img {
+      max-width:100%;
+      max-height:80vh;
+      border-radius:16px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.6);
+    }
+    .lightbox-caption {
+      text-align:center;
+      color:white;
+      margin-top:20px;
+    }
+    .lightbox-caption h3 { font-size:2rem; margin-bottom:8px; }
+    .close-lightbox, .prev-lightbox, .next-lightbox {
+      position:absolute;
+      font-size:3rem;
+      color:white;
+      cursor:pointer;
+      user-select:none;
+      opacity:0.7;
+    }
+    .close-lightbox:hover, .prev-lightbox:hover, .next-lightbox:hover { opacity:1; }
+    .close-lightbox { top:-10px; right:-10px; }
+    .prev-lightbox { left:10px; top:50%; transform:translateY(-50%); }
+    .next-lightbox { right:10px; top:50%; transform:translateY(-50%); }
+
+    footer { text-align:center; padding:40px; background:#333; color:#fff; }
+
+    /* Hidden class untuk filter */
+    .hidden { display:none !important; }
+  </style>
 </head>
 <body>
 
-    <!-- Navigation (sama seperti sebelumnya) -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">Our Story ❤️</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
-
-    <section class="page-header">
-        <h1>Galeri Kenangan</h1>
-        <p>Koleksi momen indah yang kami lalui bersama</p>
-    </section>
-
-    <!-- Filter Buttons -->
-    <section class="gallery-filter">
-        <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="dates">Dates</button>
-                <button class="filter-btn" data-filter="travel">">Travel</button>
-                <button class="filter-btn" data-filter="special">Special</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Grid -->
-    <section class="gallery">
-        <div class="container">
-            <div class="gallery-grid" id="galleryGrid">
-                <!-- Semua foto pakai gambar asli -->
-                <div class="gallery-item" data-category="dates">
-                    <div class="gallery-image">
-                        <img src="images/gallery1.jpg" alt="Kencan di Kafe">
-                        <div class="gallery-overlay">
-                            <h3>Kencan di Kafe</h3>
-                            <p>Menikmati kopi dan kue favorit</p>
-                            <button class="view-btn" onclick="openLightbox(0)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="travel">
-                    <div class="gallery-image">
-                        <img src="images/gallery2.jpg" alt="Pantai Bersama">
-                        <div class="gallery-overlay">
-                            <h3>Pantai Bersama</h3>
-                            <p>Menikmati sunset di pantai</p>
-                            <button class="view-btn" onclick="openLightbox(1)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="special">
-                    <div class="gallery-image">
-                        <img src="images/gallery3.jpg" alt="Anniversary">
-                        <div class="gallery-overlay">
-                            <h3>Anniversary</h3>
-                            <p>Merayakan anniversary pertama</p>
-                            <button class="view-btn" onclick="openLightbox(2)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="dates">
-                    <div class="gallery-image">
-                        <img src="images/gallery4.jpg" alt="Dinner Romantis">
-                        <div class="gallery-overlay">
-                            <h3>Dinner Romantis</h3>
-                            <p>Makan malam yang romantis</p>
-                            <button class="view-btn" onclick="openLightbox(3)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="travel">
-                    <div class="gallery-image">
-                        <img src="images/gallery5.jpg" alt="Gunung Bersama">
-                        <div class="gallery-overlay">
-                            <h3>Gunung Bersama</h3>
-                            <p>Mendaki gunung di pagi hari</p>
-                            <button class="view-btn" onclick="openLightbox(4)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="special">
-                    <div class="gallery-image">
-                        <img src="images/gallery6.jpg" alt="Ulang Tahun">
-                        <div class="gallery-overlay">
-                            <h3>Ulang Tahun</h3>
-                            <p>Merayakan ulang tahun bersama</p>
-                            <button class="view-btn" onclick="openLightbox(5)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="dates">
-                    <div class="gallery-image">
-                        <img src="images/gallery7.jpg" alt="Nonton Bioskop">
-                        <div class="gallery-overlay">
-                            <h3>Nonton Bioskop</h3>
-                            <p>Marathon film favorit</p>
-                            <button class="view-btn" onclick="openLightbox(6)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="travel">
-                    <div class="gallery-image">
-                        <img src="images/gallery8.jpg" alt="Road Trip">
-                        <div class="gallery-overlay">
-                            <h3>Road Trip</h3>
-                            <p>Petualangan di jalan raya</p>
-                            <button class="view-btn" onclick="openLightbox(7)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="special">
-                    <div class="gallery-image">
-                        <img src="images/gallery9.jpg" alt="Valentine">
-                        <div class="gallery-overlay">
-                            <h3>Valentine</h3>
-                            <p>Valentine penuh cinta</p>
-                            <button class="view-btn" onclick="openLightbox(8)">Lihat</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox" onclick="closeLightbox()">×</span>
-        <span class="prev-lightbox" onclick="changeSlide(-1)">❮</span>
-        <span class="next-lightbox" onclick="changeSlide(1)">❯</span>
-        <div class="lightbox-content">
-            <img id="lightbox-img" src="" alt="Foto Besar">
-            <div class="lightbox-caption">
-                <h3 id="lightbox-title">Judul</h3>
-                <p id="lightbox-desc">Deskripsi</p>
-            </div>
-        </div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">Our Story</div>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2025 Our Love Story. Made with ❤️</p>
+  <section class="page-header">
+    <h1>Galeri Kenangan Kita</h1>
+    <p>Momen-momen indah yang tak akan pernah kami lupakan</p>
+  </section>
+
+  <section class="gallery-filter">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="dates">Dates</button>
+        <button class="filter-btn" data-filter="travel">Travel</button>
+        <button class="filter-btn" data-filter="special">Special</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="container">
+      <div class="gallery-grid">
+        <!-- Ganti path foto sesuai punya kamu -->
+        <div class="gallery-item" data-category="dates">
+          <img src="images/gallery1.jpg" alt="Kencan di Kafe">
+          <div class="gallery-overlay">
+            <h3>Kencan di Kafe</h3>
+            <p>Menikmati kopi dan kue favorit</p>
+            <span class="view-btn" data-index="0">Lihat</span>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        // Data foto (sesuai urutan di HTML)
-        const galleryData = [
-            { src: "images/foto1.jpg", title: "Kencan di Kafe", desc: "Menikmati kopi dan kue favorit" },
-            { src: "images/foto2.jpg", title: "Pantai Bersama", desc: "Menikmati sunset di pantai" },
-            { src: "images/foto3.jpg", title: "Anniversary", desc: "Merayakan anniversary pertama" },
-            { src: "images/foto4.jpg", title: "Dinner Romantis", desc: "Makan malam yang romantis" },
-            { src: "images/foto5.jpg", title: "Gunung Bersama", desc: "Mendaki gunung di pagi hari" },
-            { src: "images/foto6.jpg", title: "Ulang Tahun", desc: "Merayakan ulang tahun bersama" },
-            { src: "images/foto7.jpg", title: "Nonton Bioskop", desc: "Marathon film favorit" },
-            { src: "images/foto8.jpg", title: "Road Trip", desc: "Petualangan di jalan raya" },
-            { src: "images/foto9.jpg", title: "Valentine", desc: "Valentine penuh cinta" }
-        ];
+        <div class="gallery-item" data-category="travel">
+          <img src="images/gallery2.jpg" alt="Pantai Bersama">
+          <div class="gallery-overlay">
+            <h3>Pantai Bersama</h3>
+            <p>Menikmati sunset di pantai</p>
+            <span class="view-btn" data-index="1">Lihat</span>
+          </div>
+        </div>
 
-        let currentIndex = 0;
+        <div class="gallery-item" data-category="special">
+          <img src="images/gallery3.jpg" alt="Anniversary">
+          <div class="gallery-overlay">
+            <h3>Anniversary</h3>
+            <p>Merayakan anniversary pertama</p>
+            <span class="view-btn" data-index="2">Lihat</span>
+          </div>
+        </div>
 
-        // Filter Functionality
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.dataset.filter;
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+        <div class="gallery-item" data-category="dates">
+          <img src="images/gallery4.jpg" alt="Dinner Romantis">
+          <div class="gallery-overlay">
+            <h3>Dinner Romantis</h3>
+            <p>Makan malam yang romantis</p>
+            <span class="view-btn" data-index="3">Lihat</span>
+          </div>
+        </div>
 
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.classList.remove('hidden');
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.8)';
-                        setTimeout(() => item.classList.add('hidden'), 400);
-                    }
-                });
-            });
+        <div class="gallery-item" data-category="travel">
+          <img src="images/gallery5.jpg" alt="Gunung Bersama">
+          <div class="gallery-overlay">
+            <h3>Gunung Bersama</h3>
+            <p>Mendaki gunung di pagi hari</p>
+            <span class="view-btn" data-index="4">Lihat</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="special">
+          <img src="images/gallery6.jpg" alt="Ulang Tahun">
+          <div class="gallery-overlay">
+            <h3>Ulang Tahun</h3>
+            <p>Merayakan ulang tahun bersama</p>
+            <span class="view-btn" data-index="5">Lihat</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="dates">
+          <img src="images/gallery7.jpg" alt="Nonton Bioskop">
+          <div class="gallery-overlay">
+            <h3>Nonton Bioskop</h3>
+            <p>Marathon film favorit</p>
+            <span class="view-btn" data-index="6">Lihat</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="travel">
+          <img src="images/foto8.jpg" alt="Road Trip">
+          <div class="gallery-overlay">
+            <h3>Road Trip</h3>
+            <p>Petualangan di jalan raya</p>
+            <span class="view-btn" data-index="7">Lihat</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-category="special">
+          <img src="images/foto9.jpg" alt="Valentine">
+          <div class="gallery-overlay">
+            <h3>Valentine</h3>
+            <p>Valentine penuh cinta</p>
+            <span class="view-btn" data-index="8">Lihat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">×</span>
+    <span class="prev-lightbox">❮</span>
+    <span class="next-lightbox">❯</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="">
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Our Love Story. Dibuat dengan penuh cinta</p>
+    </div>
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbTitle = document.getElementById('lightbox-title');
+    const lbDesc = document.getElementById('lightbox-desc');
+    let current = 0;
+
+    // Filter
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        items.forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
         });
+      });
+    });
 
-        // Lightbox Functions
-        function openLightbox(index) {
-            currentIndex = index;
-            document.getElementById('lightbox-img').src = galleryData[index].src;
-            document.getElementById('lightbox-title').textContent = galleryData[index].title;
-            document.getElementById('lightbox-desc').textContent = galleryData[index].desc;
-            document.getElementById('lightbox').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+    // Open Lightbox
+    document.querySelectorAll('.view-btn').forEach(btn => {
+      btn.onclick = () => {
+        current = parseInt(btn.dataset.index);
+        showImage();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+    });
 
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    function showImage() {
+      const item = items[current];
+      const img = item.querySelector('img');
+      lbImg.src = img.src;
+      lbTitle.textContent = item.querySelector('h3').textContent;
+      lbDesc.textContent = item.querySelector('p').textContent;
+    }
 
-        function changeSlide(direction) {
-            currentIndex = (currentIndex + direction + galleryData.length) % galleryData.length;
-            document.getElementById('lightbox-img').src = galleryData[currentIndex].src;
-            document.getElementById('lightbox-title').textContent = galleryData[currentIndex].title;
-            document.getElementById('lightbox-desc').textContent = galleryData[currentIndex].desc;
-        }
+    // Navigation
+    document.querySelector('.close-lightbox').onclick = () => {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    };
+    document.querySelector('.prev-lightbox').onclick = () => {
+      current = (current - 1 + items.length) % items.length;
+      showImage();
+    };
+    document.querySelector('.next-lightbox').onclick = () => {
+      current = (current + 1) % items.length;
+      showImage();
+    };
 
-        // Tutup lightbox kalau klik luar
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
-
-        // Keyboard support
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('lightbox').style.display === 'flex') {
-                if (e.key === 'Escape') closeLightbox();
-                if (e.key === 'ArrowLeft') changeSlide(-1);
-                if (e.key === 'ArrowRight') changeSlide(1);
-            }
-        });
-    </script>
+    // Keyboard & Click outside
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+      if (e.key === 'ArrowLeft') document.querySelector('.prev-lightbox').click();
+      if (e.key === 'ArrowRight') document.querySelector('.next-lightbox').click();
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
